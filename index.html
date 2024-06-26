@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<head>
+	<meta content="width=device-width,initial-scale=1" name=viewport>
+	<style>
+		html:has(#dm:checked) {
+		filter: invert(1) saturate(0.5);
+		}
+		#dm {
+		display: none;
+		}
+		#dm:checked + #sun + #moon {
+		display: block;
+		}
+		#dm:checked + #sun {
+		display: none;
+		}
+		#dm:not(:checked) + #sun {
+		display: block;
+		}
+		#dm:not(:checked) + #sun + #moon {
+		display: none;
+		}
+		label {
+		font-size: 2rem;
+		cursor: pointer;
+		filter: invert(1);
+		}
+		body {
+		margin: 0;
+		padding: 0;
+		font-family: system-ui;
+		}
+		@keyframes grad {
+		0% { background-position: 50% 0% }
+		33% { background-position: 100% 80% }
+		66% { background-position: 0% 80% }
+		100% { background-position: 50% 0% }
+		}
+		.content {
+		margin: 1rem min(10rem, 5vw);
+		}
+		.icon {
+		height: 1cap;
+		filter: invert(1);
+		}
+		h1 {
+		font-size: max(5rem, 7.5vw);
+		font-family: Arial;
+		}
+		#subheader {
+		font-size: max(1.2rem, 1.8vw);
+		}
+		header {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		padding: 1vw;
+		}
+		button {
+		border: 3px solid #ffffff;
+		background-color: rgba(0, 0, 0, 0);
+		padding: 1vw;
+		border-radius: 10px;
+		color: #ffffff;
+		font-size: 1rem;
+		transition: color 0.2s, border-color 0.2s;
+		cursor: pointer;
+		}
+		button:hover {
+		border-color: purple;
+		color: purple;
+		}
+		.card {
+		opacity: 0.9;
+		flex: 1 0 30%;
+		border-radius: 10px;
+		padding: 20px;
+		color: #ffffff;
+		position: relative;
+		z-index: 1;
+		}
+		#features {
+		gap: 10px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		}
+		#contact {
+		text-align: center;
+		flex: 1 1;
+		}
+		#top {
+		position: relative;
+		height: 600px;
+		overflow: hidden;
+		background:
+		radial-gradient(
+		circle at 50% 0,
+		rgb(255 0 0 / 50%),
+		rgb(255 0 0 / 0%) 70.71%
+		),
+		radial-gradient(
+		circle at 6.7% 75%,
+		rgb(0 0 255 / 50%),
+		rgb(0 0 255 / 0%) 70.71%
+		),
+		radial-gradient(
+		circle at 93.3% 75%,
+		rgb(0 255 0 / 50%),
+		rgb(0 255 0 / 0%) 70.71%
+		),
+		beige;
+		background-size: 400% 400%;
+		height: auto;
+		animation: grad 10s ease infinite;
+		padding: 20px;
+		}
+		#sep {
+		position: absolute;
+		transform: rotate(-5deg);
+		left: -50%;
+		width: 200%;
+		height: 100%;
+		bottom: -75%;
+		background: #ffffff;
+		z-index: 1;
+		}
+		#cards {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 10px;
+		}
+		:is(th, td):first-of-type {
+		text-align: left;
+		}
+		table {
+		border: 1px solid;
+		border-collapse: collapse;
+		}
+		td, th {
+		padding: 20px;
+		text-align: center;
+		font-size: 1.2rem;
+		}
+	</style>
+</head>
+<body>
+	<div id="top">
+		<header>
+			<label>
+				<input id="dm" type="checkbox"/>
+				<img id="sun" class="icon" src="icons/sun-solid.svg"/>
+				<img id="moon" class="icon" src="icons/moon-solid.svg"/>
+			<label>
+		</header>
+		<h1 class="content">@myrequest</h1>
+		<p class="content" id="subheader">
+			A private email proxy service. If you're here, then you know what
+			that is.
+		</p>
+	</div>
+	<div class="content">
+		<div id="cards" class="content">
+			<div class="card" style="background:#8a2387">
+				<h2>
+					<img class="icon" src="icons/envelope-solid.svg"/>
+					Unlimited Private Emails
+				</h2>
+				<p class="subheader">
+					Once accepted, you're allowed to create as many aliases as
+					you want.
+				</p>
+			</div>
+			<div class="card" style="background:#e94057">
+				<h2>
+					<img class="icon" src="icons/plane-departure-solid.svg"/>
+					Send &amp; Receive
+					<img class="icon" src="icons/plane-arrival-solid.svg"/>
+				</h2>
+				<p class="subheader">
+					Send &amp; receive emails from any alias you've created.
+				</p>
+			</div>
+			<div class="card" style="background:#f27121">
+				<h2>
+					<img class="icon" src="icons/lock-solid.svg"/>
+					IMAP, POP, PGP support
+				</h2>
+				<p class="subheader">
+					Easily set up access, encryption, and other goodies a
+					privacy minded individual might use.
+				</p>
+			</div>
+			<div class="card" style="background:#1f4037">
+				<h2>
+					<img class="icon" src="icons/filter-solid.svg"/>
+					Sieve Support
+				</h2>
+				<p class="subheader">
+					Support for the <a href="https://en.wikipedia.org/wiki/Sieve_(mail_filtering_language)">Sieve</a> filtering language.
+				</p>
+			</div>
+			<div class="card" style="background:#f953c6">
+				<h2>
+					<img class="icon" src="icons/window-restore-solid.svg"/>
+					Admin Panel and Web View
+				</h2>
+				<p class="subheader">
+					Easily manage all of your addresses, view all your emails,
+					and more in a simple to use web interface.
+				</p>
+			</div>
+			<div class="card" style="background:#8e2de2">
+				<h2>
+					<img class="icon" src="icons/computer-solid.svg"/>
+					Programmatic Access and APIs
+				</h2>
+				<p class="subheader">
+					APIs provided to easily integrate with external systems.
+				</p>
+			</div>
+			<div class="card" style="background:#7f7fd5">
+				<h2>
+					<img class="icon" src="icons/shield-halved-solid.svg"/>
+					Servers in Privacy Friendly Countries
+				</h2>
+				<p class="subheader">
+					Data is stored in European countries with strong privacy
+					laws, such as Switzerland.
+				</p>
+			</div>
+			<div class="card" style="background:#f12711">
+				<h2>
+					<img class="icon" src="icons/scroll-solid.svg"/>
+					Minimum Logs Policy
+				</h2>
+				<p class="subheader">
+					Logs are stored for 30 days to catch abuse and are
+					hard-deleted after the time period.
+				</p>
+			</div>
+			<div class="card" style="background:#5ad474">
+				<h2>
+					<img class="icon" src="icons/plus-solid.svg"/>
+					And more...
+				</h2>
+				<p class="subheader">
+					Learn more about the features after having access approved.
+				</p>
+			</div>
+		</div>
+		<div class="content">
+			<div id="contact">
+				<p>
+					Interested? Send a request to yourrequest@myrequest
+					explaining your background and use case.
+				</p>
+				<p>
+					If there is no response in 30 days, then your request
+					has been missed or denied.
+				</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		const c = window.matchMedia("(prefers-color-scheme: dark)");
+		const f = e => document.getElementById("dm").checked = e.matches;
+		f(c);
+		c.addEventListener("change", f);
+	</script>
+</body>
